@@ -34,17 +34,16 @@ import kafka.javaapi.consumer.ConsumerConnector;
 
 public class LocalConsumer extends Thread
 {
-	static Logger myLog = MyLogger.createMyLogger();
+	static Logger myLog = MyLogger.createMyLogger("LocalConsumer");
 
 	public static void main(String[] args)
 	{
 		myLog.setAdditivity(false);
-		myLog.info("LocalConsumerRunner.main() on entry");
-		
+		myLog.info("LocalConsumerRunner.main() on entry");		
 		
 		String myBroker = ConfPlay.LOCAL_BROKER_DEF;
-		String myGroup = "aly-11";
-		String myTopic = "test";
+		String myGroup = "MAR-7_B";
+		String myTopic = "zzz";
 		
 		LocalConsumer localConsumer = LocalConsumer.create(myBroker, myTopic, myGroup, 1);		
 		localConsumer.run();
@@ -100,7 +99,8 @@ public class LocalConsumer extends Thread
 //				logger.debug("***********" + new String(it.next().message()));
 				byte[] arr  = it.next().message();
 				String s = new String(arr);
-				System.out.println(s);
+//				System.out.println(s);
+				myLog.debug(s);
 			}
 		}
 		catch( kafka.consumer.ConsumerTimeoutException ex)

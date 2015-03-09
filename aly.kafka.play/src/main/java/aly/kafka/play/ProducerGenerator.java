@@ -12,7 +12,7 @@ public class ProducerGenerator
 {
 	public static void main(String[] args)
 	{
-		String BASE = "ABra_";
+		String BASE = "Abra_";
 		String topic = "zzz";
 		
 		if(args.length >= 1)
